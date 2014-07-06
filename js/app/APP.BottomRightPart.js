@@ -30,7 +30,7 @@ APP.BottomRightPart =choona.extendModule(APP.Core, {
         });
         self.sb.subscribe('appDomain_to_rightBottom', function(data){
             //console.info(data);
-            self.prepareData(data);
+            self.setData(data);
         });
 
     },

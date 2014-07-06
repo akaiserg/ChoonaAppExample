@@ -55,43 +55,74 @@ APP.Main=choona.extendModule(APP.Core, {
 
 
     /**
-     * Get the information from  the services that modules use
+     * Get the information from  the services
      */
     getDataService: function(id,url){
 
         var self= this;
+        // method defined inside of APP.Core
+        self.blockId(id);
+        self.ajaxCall(url).then(
+            function (results){
+                console.info(results);
+                // method defined inside of APP.Core
+                self.unBlockId(id);
+                switch(id){
+                    case 'top_id':
+                        self.returnDataTopPart(results);
+                    break;
+                    case 'rightBottom_id':
+                        self.returnDataRightBottom(results);
+                    break;
+                }
+            });
+
+    },
+
+    /**
+     * Ajax call with deferred and promise
+     * @param url: url service
+     * @returns {*}
+     */
+    ajaxCall: function(url){
+
+        var dfd= new $.Deferred()
         $.ajax({
             url: url,
             async: true,
             type: "GET",
+            success: dfd.resolve
+        });
+        return dfd.promise();
 
-            beforeSend: function(){
-                // method defined inside of APP.Core
-                self.blockId(id);
-            },
-            complete: function(){
-                // method defined inside of APP.Core
-                self.unBlockId(id);
-            },
-            success: function (oJsonData) {
-                console.info(oJsonData);
-                switch(id){
-                    case 'top_id':
-                        self.sb.publish('appDomain_to_TopPart', {
-                            'data':oJsonData
-                        });
-                    break;
-                    case 'rightBottom_id':
-                        self.sb.publish('appDomain_to_rightBottom', {
-                            'data':oJsonData
-                        });
-                    break;
-                }
-            },
-            error: function(){
-            }
+    },
+
+
+    /**
+     *  Publish data for  TopPart Module
+     * @param oJsonData
+     */
+    returnDataTopPart:function(oJsonData){
+
+        var self= this;
+        self.sb.publish('appDomain_to_TopPart', {
+            'data':oJsonData
+        });
+
+    },
+
+    /**
+     * Publish data   for RightBottom Module
+     * @param oJsonData
+     */
+    returnDataRightBottom:function(oJsonData){
+
+        var self= this;
+        self.sb.publish('appDomain_to_rightBottom', {
+            'data':oJsonData
         });
 
     }
+
 
 });
