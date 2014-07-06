@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>TEST</title>
+
+
+    <link href="js/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+<!--BEGIN: MAIN CONTAINER -->
+<div id="main_container_id">
+    <!--BEGIN: TOP PART -->
+    <div class="container" id="top_id">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <form class="form form-horizontal" role="form">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <h3 class="col-md-3 control-label ">City Bikes Information</h3>
+                                <div class="col-md-6">
+                                    <p class="form-control-static" >
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Get complete list:</label>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn blue" id="bt_searchList_id">Search List...</button>
+                                    <p id="numberSearch_id"> Searches done: 0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END: TOP PART -->
+   <hr/>
+
+    <div class="row ">
+        <!--BEGIN : BOTTOM LEFT PART -->
+        <div class="col-md-8  hide" id="leftBottom_id">
+            <div class="well" >
+                <div class="table-responsive">
+                    <table class="table" id="tab_list_id">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>city</th>
+                            <th>name</th>
+                            <th>country</th>
+                            <th>company</th>
+                            <th>info</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--END :  BOTTOM LEFT PART -->
+        <!--BEGIN : BOTTOM RIGHT  PART -->
+        <div class="col-md-3 col-md-offset-1  hide" id="rightBottom_id">
+            <div class="well" >
+                <div class="row">
+                    <div class="col-md-4 " >
+                        <b>City:</b>
+                    </div>
+                    <div class="col-md-4 " >
+                        <p id="city_info_id">--</p>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-4 " >
+                        <b>Country:</b>
+                    </div>
+                    <div class="col-md-4 " >
+                        <p id="country_info_id">--</p>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-4 " >
+                        <b>Latitude:</b>
+                    </div>
+                    <div class="col-md-4 " >
+                        <p id="lat_info_id">--</p>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-4 " >
+                        <b>Longitude:</b>
+                    </div>
+                    <div class="col-md-4 " >
+                        <p id="lon_info_id">--</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--END : BOTTOM RIGHT PART -->
+    </div>
+
+</div>
+<!--END: MAIN CONTAINER -->
+
+
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/bootstrap/js/bootstrap.js"></script>
+<script src="js/lib/jquery.blockUI.js"></script>
+<script src="js/lib/choona.js"></script>
+<script src="js/core/APP.Core.js"></script>
+<script src="js/app/APP.Main.js"></script>
+<script src="js/app/APP.TopPart.js"></script>
+<script src="js/app/APP.BottomLeftPart.js"></script>
+<script src="js/app/APP.BottomRightPart.js"></script>
+<script type="text/javascript">
+    /**
+     * Init
+     */
+     choona.startApp({
+        id:"main_container_id",
+        module: APP.Main,
+        config:{'a':12,'as':32}
+    });
+</script>
+
+
+
+</body>
+</html>
